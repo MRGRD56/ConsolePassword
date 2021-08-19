@@ -4,7 +4,7 @@ namespace ConsolePassword.Models
 {
     internal class SecuredPasswordBuilder : IPasswordBuilder
     {
-        private readonly SecureString _password = new();
+        private readonly SecureString _password = new SecureString();
 
         public void AppendChar(char character)
         {

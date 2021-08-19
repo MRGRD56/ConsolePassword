@@ -1,6 +1,6 @@
 ﻿namespace ConsolePassword.Models.Factory
 {
-    internal class SecuredPasswordBuilderFactory : IPasswordBuilderFactory
+    internal class SecurePasswordBuilderFactory : IPasswordBuilderFactory
     {
         public IPasswordBuilder Create() => new SecuredPasswordBuilder();
     }
