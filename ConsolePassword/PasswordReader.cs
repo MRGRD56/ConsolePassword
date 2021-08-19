@@ -6,7 +6,7 @@ namespace ConsolePassword
 {
     public static class PasswordReader
     {
-        private static object ReadPasswordObject(IPasswordBuilderFactory passwordBuilderFactory)
+        private static object ReadPasswordObject(IPasswordBuilderFactory passwordBuilderFactory, bool displayPasswordCharacter = true)
         {
             var password = passwordBuilderFactory.Create();
             while (true)
@@ -21,22 +21,28 @@ namespace ConsolePassword
                 if (key.Key == ConsoleKey.Backspace)
                 {
                     password.RemoveLast();
-                    Console.Write("\b \b");
+                    if (displayPasswordCharacter)
+                    {
+                        Console.Write("\b \b");
+                    }
                 }
                 else if (key.KeyChar != '\u0000')
                 {
                     password.AppendChar(key.KeyChar);
-                    Console.Write("*");
+                    if (displayPasswordCharacter)
+                    {
+                        Console.Write("*");
+                    }
                 }
             }
             
             return password.Build();
         }
 
-        public static string ReadPassword() => 
-            (string)ReadPasswordObject(new StringPasswordBuilderFactory());
+        public static string ReadPassword(bool displayPasswordCharacter = true) => 
+            (string)ReadPasswordObject(new StringPasswordBuilderFactory(), displayPasswordCharacter);
         
-        public static SecureString ReadSecuredPassword() => 
-            (SecureString)ReadPasswordObject(new SecuredPasswordBuilderFactory());
+        public static SecureString ReadSecuredPassword(bool displayPasswordCharacter = true) => 
+            (SecureString)ReadPasswordObject(new SecuredPasswordBuilderFactory(), displayPasswordCharacter);
     }
 }
