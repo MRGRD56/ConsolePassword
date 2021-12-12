@@ -3,7 +3,7 @@
     internal interface IPasswordBuilder
     {
         void AppendChar(char character);
-        void RemoveLast();
+        bool RemoveLast();
         object Build();
     }
 }

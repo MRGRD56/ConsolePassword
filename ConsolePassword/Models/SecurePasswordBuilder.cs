@@ -11,12 +11,13 @@ namespace ConsolePassword.Models
             _password.AppendChar(character);
         }
 
-        public void RemoveLast()
+        public bool RemoveLast()
         {
-            if (_password.Length > 0)
-            {
-                _password.RemoveAt(_password.Length - 1);
-            }
+            if (_password.Length <= 0) return false;
+            
+            _password.RemoveAt(_password.Length - 1);
+            return true;
+
         }
 
         public object Build() => _password;

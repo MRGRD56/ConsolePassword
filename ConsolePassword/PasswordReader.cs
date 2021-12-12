@@ -26,8 +26,8 @@ namespace ConsolePassword
                 }
                 if (key.Key == ConsoleKey.Backspace)
                 {
-                    password.RemoveLast();
-                    if (displayPasswordCharacter)
+                    var isSuccess = password.RemoveLast();
+                    if (displayPasswordCharacter && isSuccess)
                     {
                         Console.Write("\b \b");
                     }
