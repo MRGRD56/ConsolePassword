@@ -5,8 +5,6 @@ namespace ConsolePassword.Test
 {
     internal static class Program
     {
-        private static readonly Random Random = new();
-
         private static void Main(string[] args)
         {
             Console.Write("Password: ");
